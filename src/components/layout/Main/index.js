@@ -22,6 +22,9 @@ import CalibrateCam from "../../../pages/TrainFocus/CalibrateCam";
 
 import Results from "../../../pages/TrainFocus/TrainFocusResults";
 import StartFocus from "../../../pages/TrainFocus/StartFocus/StartFocus";
+import { pageNameContext } from "../Layout";
+import { useContext } from "react";
+
 // import Exercise from "../../../pages/TrainFocus/Exercise";
 //  import Popup from "./popup/Popup";
 // import { Outlet, Route, Routes } from "react-router-dom";
@@ -29,9 +32,11 @@ import StartFocus from "../../../pages/TrainFocus/StartFocus/StartFocus";
 // import Context from "../../../context";
 
 function Main() {
+  const pageNameContextLocal = useContext(pageNameContext)
   return (
     <>
-      <Header />
+    {pageNameContextLocal.showHeader&&<Header />}
+      
 
       
       <Routes>

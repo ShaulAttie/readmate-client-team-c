@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 // import SubmitBtn from "../SubmitBtn";
-import TextArea from "../TextArea/Index";
+import TextArea from "../TextArea";
 import  img  from "../../../assets/img/logo/vector.png"
 //group c- yehoshua
 export default function Questions() {
@@ -107,8 +107,8 @@ export default function Questions() {
         </label>
         <span>
           {/* <SubmitBtn path={"/train_reading_level/result"} type="submit" name={"done"} onclick={onSubmit}>done</SubmitBtn> */}
-          yehoshua  did it
-          <button type="submit" >done</button>
+          {/* yehoshua  did it */}
+          <button className="" type="submit" >done</button>
           </span>
           {/* disabled={!isFormValid()} onSubmit={onSubmit} 
         {/* {JSON.stringify(formData)} */}
