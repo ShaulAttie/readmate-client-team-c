@@ -10,7 +10,7 @@ import Page4 from "../../../pages/Assessments/Page4";
 import Page3 from "../../../pages/Assessments/Page3";
 import Header from "../header";
 import RatingAndScore from "../../common/ReatingAndScore";
-import { Outlet, Route, Routes } from "react-router-dom"
+// import { Outlet, Route, Routes } from "react-router-dom"
 import TeamH from "../../teams/TeamH";
 import Training from "../../../pages/FreeStyle/Training"
 import Exercise from "../../../pages/TrainReading/Level/Exercise"
@@ -28,7 +28,7 @@ import PushUpTimer from "../../../pages/TrainReading/PushUpTimer";
 import PushUpInstructions from "../../../pages/TrainReading/PushUpInstructions";
 //----
 // import Popup from "../Popup/Popup"
-import { Route, Routes } from "react-router-dom";
+// import { Route, Routes } from "react-router-dom";
 import CalibrateCam from "../../../pages/TrainFocus/CalibrateCam";
 // import TextArea from "../common/TextArea/Index";
 // import Context from "../../../context";
@@ -37,13 +37,13 @@ import Results from "../../../pages/TrainFocus/TrainFocusResults";
 import StartFocus from "../../../pages/TrainFocus/StartFocus/StartFocus";
 import Instructions from "../../../pages/FreeStyle/Instructions";
 // import Exercise from "../../../pages/TrainFocus/Exercise";
-import Exercise from "../../../pages/TrainFocus/Exercise";
+// import Exercise from "../../../pages/TrainFocus/Exercise";
 //  import Popup from "./popup/Popup";
 // import { Outlet, Route, Routes } from "react-router-dom";
 // import TextArea from "../common/TextArea/Index";
 // import Context from "../../../context";
-import Popup from "../Popup";
-import Header from "../header"
+// import Popup from "../Popup";
+// import Header from "../header"
 import TeamF from "../../teams/TeamF";
 
 function Main() {
