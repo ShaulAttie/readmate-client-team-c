@@ -1,12 +1,21 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom'
 // import SubmitBtn from "../SubmitBtn";
 import TextArea from "../TextArea";
 import img from "../../../assets/img/logo/vector.png"
 import { useLocation } from "react-router-dom";
+=======
+import { useNavigate } from "react-router-dom";
+import SubmitBtn from "../SubmitBtn";
+import TextArea from "../TextArea";
+import img from "../../../assets/img/logo/vector.png"
+import './style.css'
+>>>>>>> 6ef21170bd6237b9449999cd374641373a8ff16b
 //group c- yehoshua
-export default function Questions() {
+// changes on css by shaul
 
+export default function Questions() {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
   const location = useLocation()
@@ -35,11 +44,21 @@ export default function Questions() {
     setFormData(test_result)
     const sendToDb = (body) => {
       //i need the create function to send it to db
+<<<<<<< HEAD
       // body + to db 
     }
     console.log(body)
     console.log(test_result)
 
+=======
+      // body to db 
+
+    }
+    // console.log(e.currentTarget)
+    console.log(body)
+    console.log(e.currentTarget)
+    // isFormValid(body)
+>>>>>>> 6ef21170bd6237b9449999cd374641373a8ff16b
     navigate("/train_reading_level/result");
   };
 
@@ -53,10 +72,12 @@ export default function Questions() {
   // };
 
   return (
-    <div>
+    <div className="form_4questions">
       <form noValidate onSubmit={onSubmit}>
-        <div><h4>Instructions</h4>
+        <div className="form_instructions">
+          <h4>Instructions</h4>
           <img src={img} alt="" />
+<<<<<<< HEAD
           <p>
             “Hello. My name is Inigo Montoya. You killed my father. Prepare to die”
           </p>
@@ -92,7 +113,33 @@ export default function Questions() {
         </span>
         {/* disabled={!isFormValid()} onSubmit={onSubmit}  */}
          {JSON.stringify(formData)}
+=======
+          <p>“Hello. My name is Inigo Montoya. You killed my father. Prepare to die”</p>
+        </div>
+        <TextArea name="questionOne"
+          value={formData.questionOne || ''}
+          onChange={onChange}>Who is the main character"
+        </TextArea>
+        <TextArea name="questionTwo"
+          value={formData.questionTwo || ''}
+          onChange={onChange} >"What can you say about the theme of the story?"
+        </TextArea>
+        <TextArea name="questionThree"
+          value={formData.questionThree || ''}
+          onChange={onChange}>"Why do you think the author wrote this book?"
+        </TextArea>
+        <TextArea name="questionFour"
+          value={formData.questionFour || ''}
+          onChange={onChange} >"What do you think is going to happen?"
+        </TextArea>
+
+        {/* <SubmitBtn path={"/train_reading_level/result"} type="submit" name={"done"} onclick={onSubmit}>done</SubmitBtn> */}
+        {/* yehoshua  did it */}
+        <button type="submit" className="submit">done</button>
+        {/* disabled={!isFormValid()} onSubmit={onSubmit} 
+        {/* {JSON.stringify(formData)} */}
+>>>>>>> 6ef21170bd6237b9449999cd374641373a8ff16b
       </form>
     </div>
-  )
+  );
 }

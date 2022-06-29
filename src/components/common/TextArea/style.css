@@ -1,16 +1,22 @@
 .form-group>label {
     position: absolute;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
     background-color: white;
     z-index: 3;
     margin-top: -0.8rem;
+    width: 100%;
+    font-size: small;
+}
+
+.form-group{
+    width: 100%;
 }
 
 .form-control {
     position: relative;
-    width: 24rem;
+    /* width: 24rem; */
     height: 3.75rem;
-
+width: 100%;
     background: #FFFFFF;
     border: 1px solid #7D839D;
     border-radius: 12px;
@@ -19,5 +25,7 @@
 .ta_box{
     display: flex;
     justify-content: center;
-    margin: 1rem;
+    /* margin: 1rem; */
+    width: 100%;
+    padding: 1rem;
 }
