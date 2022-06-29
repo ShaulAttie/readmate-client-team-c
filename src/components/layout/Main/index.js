@@ -35,14 +35,11 @@ import CalibrateCam from "../../../pages/TrainFocus/CalibrateCam";
 
 import Results from "../../../pages/TrainFocus/TrainFocusResults";
 import StartFocus from "../../../pages/TrainFocus/StartFocus/StartFocus";
-<<<<<<< HEAD
 import { pageNameContext } from "../Layout";
 import { useContext } from "react";
 
-=======
 import Instructions from "../../../pages/FreeStyle/Instructions";
 // import Exercise from "../../../pages/TrainFocus/Exercise";
->>>>>>> 6ef21170bd6237b9449999cd374641373a8ff16b
 // import Exercise from "../../../pages/TrainFocus/Exercise";
 //  import Popup from "./popup/Popup";
 // import { Outlet, Route, Routes } from "react-router-dom";
@@ -53,20 +50,15 @@ import Instructions from "../../../pages/FreeStyle/Instructions";
 import TeamF from "../../teams/TeamF";
 
 function Main() {
-<<<<<<< HEAD
   const pageNameContextLocal = useContext(pageNameContext)
+  const { popup } = useContext(popupContext);
   return (
     <>
     {pageNameContextLocal.showHeader&&<Header />}
       
 
       
-=======
-  const { popup } = useContext(popupContext);
-  return (
-    <>
-      <Header />
->>>>>>> 6ef21170bd6237b9449999cd374641373a8ff16b
+
       <Routes>
         {/* Team A */}
         <Route path="teama">
