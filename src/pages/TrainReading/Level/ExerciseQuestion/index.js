@@ -1,4 +1,3 @@
-import './style.css';
 import React, { useContext, useEffect } from 'react'
 import { pageNameContext } from '../../../../components/layout/Layout'
 import Questions from "../../../../components/common/Questions";
