@@ -13,7 +13,7 @@ export default function Header() {
 
    // console.log(pageNameContextLocal.pageName);
    const [navState, setNavState] = useState(false);
-console.log(pageNameContextLocal);
+// console.log(pageNameContextLocal);
 
    return (
 

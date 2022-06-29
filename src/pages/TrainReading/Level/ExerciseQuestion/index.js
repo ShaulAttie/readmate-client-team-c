@@ -1,11 +1,12 @@
-import styles from './style.module.css';
+// import styles from './style.module.css';
 import React, { useContext, useEffect } from 'react'
 import { pageNameContext } from '../../../../components/layout/Layout'
 import Questions from "../../../../components/common/Questions";
+import { useNavigate } from 'react-router-dom'
 
 //group c- yehoshua+shaul
 
-export default function QuestionsLevel() {
+export default function QuestionsLevel(props) {
   const pageInfo = useContext(pageNameContext)
   useEffect(() => {
     pageInfo.setPageName("Questions")
@@ -45,7 +46,7 @@ export default function QuestionsLevel() {
 
 // 4
 const currentSpeed = () => {
-  // recieve object of information from yishai and put current speed into a state
+  // recieve object of information from yishai and put current speed into a state-good
 }
 // 5 should be in the actual questions component
   // 1.amount of rounds
