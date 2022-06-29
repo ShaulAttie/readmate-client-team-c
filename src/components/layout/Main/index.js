@@ -3,22 +3,22 @@ import Nav from "../Nav";
 import Popup from "../Popup";
 import { Route, Routes } from "react-router-dom";
 import TeamA from "../../teams/TeamA";
-import Page1 from "../../../pages/Assessments/Page1";
-import Page6 from "../../../pages/Assessments/Page6";
-import Page5 from "../../../pages/Assessments/Page5";
-import Page4 from "../../../pages/Assessments/Page4";
-import Page3 from "../../../pages/Assessments/Page3";
-import Header from "../header";
+// import Page1 from "../../../pages/Assessments/Page1";
+// import Page6 from "../../../pages/Assessments/Page6";
+// import Page5 from "../../../pages/Assessments/Page5";
+// import Page4 from "../../../pages/Assessments/Page4";
+// import Page3 from "../../../pages/Assessments/Page3";
+import Header from "../Header";
 import RatingAndScore from "../../common/ReatingAndScore";
 // import { Outlet, Route, Routes } from "react-router-dom"
 import TeamH from "../../teams/TeamH";
 import Training from "../../../pages/FreeStyle/Training"
+// team C pages
 import Exercise from "../../../pages/TrainReading/Level/Exercise"
-import ExerciseClock from "../../../pages/TrainReading/Level/ExerciseClock"
+import ExerciseClock from "../../../pages/TrainReading/Level/ExerciseClock/index"
 import ExerciseQuestion from "../../../pages/TrainReading/Level/ExerciseQuestion"
 import ExerciseRate from "../../../pages/TrainReading/Level/ExerciseRate"
 import ExerciseResult from "../../../pages/TrainReading/Level/ExerciseResult"
-// import TeamC from '../../teams/TeamC'
 //---- נא לקבל שינויים לפופאפ קונטקטס -team-b
 import { useContext } from "react";
 import { popupContext } from "../../../context/context";
@@ -27,11 +27,7 @@ import BookInfo from '../../common/BookInfo'
 import PushUpTimer from "../../../pages/TrainReading/PushUpTimer";
 import PushUpInstructions from "../../../pages/TrainReading/PushUpInstructions";
 //----
-// import Popup from "../Popup/Popup"
-// import { Route, Routes } from "react-router-dom";
 import CalibrateCam from "../../../pages/TrainFocus/CalibrateCam";
-// import TextArea from "../common/TextArea/Index";
-// import Context from "../../../context";
 
 import Results from "../../../pages/TrainFocus/TrainFocusResults";
 import StartFocus from "../../../pages/TrainFocus/StartFocus/StartFocus";
@@ -40,10 +36,8 @@ import Instructions from "../../../pages/FreeStyle/Instructions";
 // import Exercise from "../../../pages/TrainFocus/Exercise";
 //  import Popup from "./popup/Popup";
 // import { Outlet, Route, Routes } from "react-router-dom";
-// import TextArea from "../common/TextArea/Index";
+// import TextArea from "../common/TextArea";
 // import Context from "../../../context";
-// import Popup from "../Popup";
-// import Header from "../header"
 import TeamF from "../../teams/TeamF";
 
 function Main() {
@@ -53,14 +47,14 @@ function Main() {
       <Header />
       <Routes>
         {/* Team A */}
-        <Route path="teama">
+        {/* <Route path="teama">
           <Route path="page1" element={<Page1 />} />
           <Route path="page3" element={<Page3 />} />
           <Route path="page4" element={<Page4 />} />
           <Route path="page5" element={<Page5 />} />
           <Route path="page6" element={<Page6 />} />
           <Route index element={<TeamA />} />
-        </Route>
+        </Route> */}
 
         {/* Team B */}
         <Route path="train-reading">
@@ -71,14 +65,14 @@ function Main() {
         </Route>
 
         {/* Team C */}
-        {/* <Route path="train_reading_level"> */}
+        <Route path="train_reading_level">
         {/* <Route index element={<>team's components</>} /> */}
-        {/* <Route path="exercise" element={<Exercise />} />
+        <Route path="exercise" element={<Exercise />} />
           <Route path="exercise_clock" element={<ExerciseClock />} />
           <Route path="rate" element={<ExerciseRate />} />
           <Route path="question" element={<ExerciseQuestion />} />
-          <Route path="result" element={<ExerciseResult />} /> */}
-        {/* </Route> */}
+          <Route path="result" element={<ExerciseResult />} />
+        </Route>
 
         {/* Team D */}
         {/* <Route path="teams-path">
@@ -93,10 +87,10 @@ function Main() {
         </Route> */}
 
         {/* Team F */}
-        <Route path="/teamf">
+        {/* <Route path="/teamf"> */}
           {/* <Route index element={<TeamF />} />
           <Route path="components-path" element={<TeamF />} /> */}
-        </Route>
+        {/* </Route> */}
 
         {/* Team G */}
         {/* <Route path="/train-focus"> */}

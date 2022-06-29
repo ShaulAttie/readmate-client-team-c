@@ -1,213 +1,123 @@
-import { useContext } from 'react';
-import { pageNameContext } from '../../../../components/layout/Layout';
+import React from "react";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { useState } from "react";
+import styles from "./style.module.css";
+import SquareButton from "../SquareButton";
+import RoundedButton from "../RoundedButton";
 
-import React from 'react'
-import './style.css';
-import SoundBar from "./SoundBar.png"
-import Clock from "../../../../components/common/Clock"
-import SquareButton from '../../../../components/common/SquareButton';
-import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from 'react';
+// Creator : Team H - Milka
 
-const ExerciseClock = () => {
+//instructions: when you use this component you should
+//  send the following props:
+//  1. "freeStyle" with a value:false.
+//  2. "time" with the value 180 for 3 minutes clock.
+//  3. object named "funcs" with the keys: "onPlay","onPause" and "onComplete"
+//     and values which are your functions for those situations.
+//  4. only for freeStyle: "rapidValue" with a value: functoin that will get current LPM
+//  5. "initRapidValue" with a value of the last user's LPM.
 
-  const pageNameHeader = useContext(pageNameContext);
-  pageNameHeader.setPageName("Level Exercise");
-
-  const LPM2 = useLocation()
-  // console.log(LPM2.state.LPM);
-  const LPM = LPM2.state.LPM
-
-
-
-
-
-  // const audioRef = useRef();
-  // const [lpm, setLpm] = useState(16); // i have to set the LPM here
-
-  // let [fileName, lpmFile] = pickFile(lpm);
-  // console.log("fileName ", fileName);
-  // // console.log("lpmFile ", lpmFile);
+function Clock(props) {
+  let freeStyle = props.freeStyle; //Todo: change to props.freeStyle
+  const [play, setPlay] = useState(false);
+  const [isplay, setIsPlay] = useState(false);
+  let timeInSeconds = props.time; //Todo: change to props.time;
+  const [rapidValue, setRapidValue] = useState(props.initRapidValue);
+  const [isFinish, setIsFinish] = useState(false);
 
 
-  // useEffect(() => {
-  //   const audio = require('../../../../assets/audio/wush_mp3/wush_100_1min.mp3');
-  //   console.log("audio ", audio);
-  //   audioRef.current.src = audio;
-  //   console.log(audioRef.current.src);
-  // }, []);
-
-
-  // const [changePercent, setChangePercent] = useState(lpm / lpmFile);
-  // const [sec, setSec] = useState(1);
-  // console.log("lpm ", lpm);
-  // console.log("lpmFile ", lpmFile);
-  // const [play, setPlay] = useState(false);
-  // ///////////////////////////////////////////////////////////////////////////////////
-  // function change() {
-  //   setTimeout(() => {
-  //     // let count = changePercent + ((0.125 * (lpm / lpmFile)) / 180)
-  //     let count = changePercent + ((0.125 * (lpm / lpmFile)) / 180)
-  //     // let count = changePercent * (1 + (0.125 / 180))
-
-  //     setChangePercent(count)
-  //   }, 1000);
-  // }
-  // //////////////////////////////////////////////////////////////////////////////////
-  // useEffect(() => {
-  //   if (play) {
-  //     change();
-  //     setSec(sec + 1)
-  //     // debugger;
-  //     // audioRef.current.src = audio;
-  //     // console.log(audioRef.current.src);
-  //     audioRef.current.playbackRate = changePercent;
-  //     audioRef.current.play();
-  //     // console.log(Date.now().toString());
-  //     console.log(changePercent);
-  //   }
-  // }, [changePercent, play])
-
-  // // audioRef.current.src = audio;
-  // // console.log(audioRef.current.src)
-  // // audioRef.current.playbackRate = changePercent;
-
-
-
-
-
-  // function pickFile(lpm) {
-  //   let array = [10, 20, 40, 60, 80, 100];
-  //   let index = 0;
-  //   for (let i in array) {
-  //     if (lpm > array[i]) {
-  //       index = Number(i);
-  //     }
-  //   }
-  //   if (lpm - array[index] > array[index + 1] - lpm) {
-  //     index++;
-  //   }
-  //   // console.log("index  ", index);
-  //   // console.log(array[index]);
-  //   let fileName = "../../../../assets/audio/wush_mp3/wush_" + array[index] + "_1min.mp3";
-  //   // console.log(fileName);
-  //   return [fileName, array[index]];
-  // }
-
-  const navigate = useNavigate();
-
-  const route = '/train_reading_level/rate'
-
-  const shaulFuncs = {
-    // onPlay: shaulOnPlay,
-    // onPause: shaulOnPause,
-    onComplete: shaulOnComplete
+  function complete() {
+    setIsFinish(true);
+    props.funcs.onComplete();
   }
 
-  const objProps = { LPM: LPM }
+  const renderTime = ({ remainingTime }) => {
+    const minutes = Math.floor(remainingTime / 60);
+    const seconds = remainingTime - minutes * 60;
 
-  function shaulOnComplete() {
-    navigate(route, { state: objProps })
-  }
+    return (
+      <div className={styles.wrapping}>
+      <div className= {styles.timer}>
+        {freeStyle ? (
+          <div className={styles.squarebutton}>
+            <SquareButton>
+              <div className={styles.rapid}>{rapidValue}</div> LPM
+              </SquareButton>
+          </div>
+        ) : (
+          <div className={styles.value}>
+            {minutes < 10 && 0}
+            {minutes}:{seconds < 10 && 0}
+            {seconds}
+          </div>
+        )}
+        {remainingTime === 0 && complete()}
+        {!isFinish && (
+          <div
+            className={styles.playPause}
+            onClick={() => {
+              !freeStyle && setPlay(!play);
+              !isplay && props.funcs.onPlay();
+              isplay && props.funcs.onPause();
+            console.log(isplay);
+            }}
+            >
+              <RoundedButton setIsPlay={setIsPlay} isPlay={isplay}></RoundedButton>
+            </div>
+          )}
+          </div>
+      </div>
+    );
+  };
+  // isplay&&props.funcs.onPlay()
 
   return (
-    <>
-      <div className="level_clock">
-        <Clock freeStyle={false} time={5} funcs={shaulFuncs}></Clock>
-        <div className="squareButton2"><strong>{LPM} LPM</strong></div>
-        <img src={SoundBar} />
-
-        {/* 
-        <div>
-          <audio autoplay ref={audioRef}> </audio>
-          <p>{changePercent / (lpm / lpmFile)}</p>
-          <p>{sec}</p>
-          <button onClick={() => { setPlay(true); audioRef.current.play(); }}>play </button>
-          <button onClick={() => { setPlay(false); audioRef.current.pause() }}>pause </button>
-        </div> */}
+    
+    <div className={styles.wrapClock}>
+      {/*  this clock refers to freeStyle */}
+      {freeStyle && (
+        <button
+          className={styles.plusMinus}
+          onClick={() => {
+            setRapidValue(rapidValue + 1);
+            props.funcs.rapid(rapidValue + 1);
+          }}
+        >
+          +
+        </button>
+      )}
+      <div>
+        <CountdownCircleTimer
+          rotation={"counterclockwise"}
+          isPlaying={play}
+          duration={timeInSeconds}
+          colors={["#7D56A5"]}
+          onComplete={() => ({ shouldRepeat: false, delay: 1 })}
+          trailColor={"#FEEFEC"}
+          strokeLinecap={"square"}
+          size={200}
+        >
+          {renderTime}
+        </CountdownCircleTimer>
       </div>
-    </>
-  )
+      {freeStyle && (
+        <button
+          className={styles.plusMinus}
+          onClick={() => {
+            rapidValue > 0 && setRapidValue(rapidValue - 1);
+            props.funcs.rapid(rapidValue - 1);
+          }}
+        >
+          -
+        </button>
+      )}
+      </div>
+      
+  );
+  
+
+  // return <CountdownCircleTimer></CountdownCircleTimer>;
+  // console.log("stop");
 }
 
-export default ExerciseClock
 
-
-// import React from 'react'
-// import { useState, useEffect, useRef } from 'react';
-
-// export default function PushUpTimer() {
-
-
-//     const audioRef = useRef();
-//     const [lpm, setLpm] = useState(9); // i have to set the LPM here
-
-//     let [fileName, lpmFile] = pickFile(lpm);
-//     useEffect(() => {
-//         const audio = require(fileName + "");
-//         audioRef.current.src = audio;
-//         console.log(audioRef.current.src);
-//     }, []);
-
-
-//     const [changePercent, setChangePercent] = useState(lpm / lpmFile);
-//     const [sec, setSec] = useState(1);
-//     console.log("lpm ", lpm);
-//     console.log("lpmFile ", lpmFile);
-//     const [play, setPlay] = useState(false);
-/////////////////////////////////////////////////////////////////////////////////////
-//     function change() {
-//         setTimeout(() => {
-//             // let count = changePercent + ((0.125 * (lpm / lpmFile)) / 180)
-//             let count = changePercent + ((0.125 * (lpm / lpmFile)) / 180)
-//             // let count = changePercent * (1 + (0.125 / 180))
-
-//             setChangePercent(count)
-//         }, 1000);
-//     }
-////////////////////////////////////////////////////////////////////////////////////
-//     useEffect(() => {
-//         if (play) {
-//             change();
-//             setSec(sec + 1)
-//             // debugger;
-//             // audioRef.current.src = audio;
-//             // console.log(audioRef.current.src);
-//             audioRef.current.playbackRate = changePercent;
-//             audioRef.current.play();
-//             // console.log(Date.now().toString());
-//             console.log(changePercent);
-//         }
-//     }, [changePercent, play])
-
-//     // audioRef.current.src = audio;
-//     // console.log(audioRef.current.src)
-//     // audioRef.current.playbackRate = changePercent;
-
-//     return (
-//         <div>
-//             <audio ref={audioRef}> </audio>
-//             <p>{changePercent / (lpm / lpmFile)}</p>
-//             <p>{sec}</p>
-//             <button onClick={() => { setPlay(true); audioRef.current.play(); }}>play </button>
-//             <button onClick={() => { setPlay(false); audioRef.current.pause() }}>pause </button>
-
-//         </div>)
-// }
-////////////////////////////////////////////////////////////////////////////////////
-// function pickFile(lpm) {
-//     let array = [10, 20, 40, 60, 80, 100];
-//     let index = 0;
-//     for (let i in array) {
-//         if (lpm > array[i]) {
-//             index = Number(i);
-//         }
-//     }
-//     if (lpm - array[index] > array[index + 1] - lpm) {
-//         index++;
-//     }
-//     // console.log(index);
-//     let fileName = `./wush_mp3/wush_${array[index]}_1min.mp3`; // the real path need to be added
-
-//     return [fileName, array[index]];
-// }
+export default Clock;

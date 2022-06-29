@@ -1,35 +1,52 @@
-.level_clock {
-    display: flex;
+.wrapping {
     flex-direction: column;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
-    height: 100vh;
+    gap: 10px;
+    padding-top: 55px;
 }
 
-.squareButton2 {
-    /* box-sizing: border-box; */
+.wrapClock {
+    display: flex;
+    justify-content: center;
+    padding: 10%;
+    gap: 5%;
 
-    /* Auto layout */
-    /* display: relative; */
+}
+
+.timer {
+    font-family: "Montserrat";
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px 7px;
-    /* gap: 8px; */
+    gap: 20px;
+}
 
-    width: 70px;
-    height: 70px;
+.text {
+    color: #aaa;
+}
 
-    background: #feefec;
-    border: 1.5px solid #252525;
-    /* 1 */
+.value {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    box-shadow: 2px 2px 0px #d35400;
-    border-radius: 20px;
+    /* position: absolute; */
+    /* width: 63px; */
+    /* height: 19px; */
+    /* left: 176px;
+    top: 378px; */
 
-    /* Inside auto layout */
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    /* font-size: 24; */
+    /* line-height: 18px; */
+    /* identical to box height, or 77% */
 
-    /* flex: none;
-    order: 0;
-    flex-grow: 0; */
+    text-align: center;
+    text-transform: uppercase;
 }
