@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
-// import SubmitBtn from "../SubmitBtn";
+import { useNavigate } from "react-router-dom";
+import SubmitBtn from "../SubmitBtn";
 import TextArea from "../TextArea";
 import img from "../../../assets/img/logo/vector.png"
 import './style.css'
@@ -8,7 +8,6 @@ import './style.css'
 // changes on css by shaul
 
 export default function Questions() {
-
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
 
@@ -105,5 +104,5 @@ export default function Questions() {
         {/* {JSON.stringify(formData)} */}
       </form>
     </div>
-  )
+  );
 }
